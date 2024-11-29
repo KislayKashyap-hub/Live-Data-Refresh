@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Live Data Refresh">
+        <!-- Combobox to select the object -->
+        <lightning-combobox
+            label="Select Object"
+            value={selectedObject}
+            options={objectOptions}
+            onchange={handleObjectChange}
+        ></lightning-combobox>
+
+        <!-- Display the data in a table -->
+        <template if:true={latestRecords.length}>
+            <lightning-datatable
+                data={latestRecords}
+                columns={columns}
+                key-field="Id"
+            ></lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Object Data Table with Filtering">
+        <lightning-combobox
+            label="Select Object"
+            placeholder="Search Objects..."
+            options={objectOptions}
+            onchange={handleObjectChange}
+        ></lightning-combobox>
+
+        <template if:true={showDateFields}>
+            <lightning-input type="date" label="Start Date" onchange={handleStartDateChange}></lightning-input>
+            <lightning-input type="date" label="End Date" onchange={handleEndDateChange}></lightning-input>
+        </template>
+
+        <lightning-button
+            label="Search"
+            disabled={isSearchDisabled}
+            onclick={handleSearch}
+        ></lightning-button>
+
+        <template if:true={records.length}>
+            <lightning-datatable data={records} columns={columns} key-field="Id"></lightning-datatable>
+        </template>
+    </lightning-card>
+</template>
